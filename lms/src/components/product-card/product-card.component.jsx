@@ -3,13 +3,12 @@ import './product-card.styles.scss';
 import Button from '../button/button.component';
 
 const ProductCard = ({ product }) => {
-    const { name, author, pages, imageUrl } = product;
+    const { title, author, category, imageUrl } = product;
     return (
         <div className='product-card-container'>
-            <img src={imageUrl} alt={`${name}`} />
+            <img src={imageUrl} alt={`${title}`} />
             <div className='footer'>
-                <span className='name'>{name}</span>
-                <span className='price'>{pages}</span>
+                <span className='name'>{title}</span>
             </div>
             <Button buttonType='inverted'>{author}</Button>
         </div>
