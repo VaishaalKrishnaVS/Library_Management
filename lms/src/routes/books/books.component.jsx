@@ -14,6 +14,7 @@ class Shop extends Component {
         this.state = {
             products: BOOK,
             searchFeild: "",
+            searchFeild2: "",
         };
     }
 
@@ -25,30 +26,39 @@ class Shop extends Component {
             return { searchFeild };
         });
     };
-    render() {
-        const { products, searchFeild } = this.state;
-        const { onSearchChange } = this;
 
-        const filteredMonsters = products.filter((product) => {
-            return product.author.toLowerCase().includes(searchFeild);
+    onSearchAuther = (event) => {
+        const searchFeild2 = event.target.value.toLowerCase();
+        this.setState(() => {
+            return { searchFeild2 };
         });
+    };
+
+    render() {
+        const { products, searchFeild, searchFeild2 } = this.state;
+        const { onSearchChange, onSearchAuther } = this;
+
+        const filteredCards = products.filter((product) => {
+            return product.name.toLowerCase().includes(searchFeild) && product.author.toLowerCase().includes(searchFeild2);
+        });
+
 
         return (
             <div>
                 <div className='searchbox'>
-                  <SearchBox
-                    className="search-box"
-                    onChange={onSearchChange}
-                    placeholder="search based on Title"
-                   />  
-                  <SearchBox
-                    className="search-box"
-                    onChange={onSearchChange}
-                    placeholder="search basead on author"
-                   />  
+                    <SearchBox
+                        className="search-box"
+                        onChange={onSearchChange}
+                        placeholder="search based on Title"
+                    />
+                    <SearchBox
+                        className="search-box"
+                        onChange={onSearchAuther}
+                        placeholder="search basead on author"
+                    />
                 </div>
-                
-                <CardList products={filteredMonsters}/>
+
+                <CardList products={filteredCards} />
             </div>
 
         );

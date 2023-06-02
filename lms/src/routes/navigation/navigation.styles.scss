@@ -5,6 +5,13 @@
     justify-content: space-between;
     margin-bottom: 25px;
 
+    .head {
+        color: alpha($color: #000000);
+        margin: 33px;
+        margin-left: 650px;
+        text-align: justify;
+    }
+
     .logo-container {
         height: 100%;
         width: 70px;

@@ -8,10 +8,12 @@ import './navigation.styles.scss';
 const Navigation = () => {
     return (
         <Fragment>
+            
             <div className="navigation">
                 <Link className="logo-container" to="/">
                     <LmsLogo className="logo" />
                 </Link>
+                <h1 className="head">Library_Management_System</h1>
                 <div className="nav-links-container">
                     <Link className="nav-link" to="/books">
                         <BookLogo />
