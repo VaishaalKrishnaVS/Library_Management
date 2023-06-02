@@ -1,7 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Metal Mania',
-    sans-serif;
+  font-family: 'Metal Mania';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
