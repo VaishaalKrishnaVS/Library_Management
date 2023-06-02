@@ -1,0 +1,8 @@
+.search-box {
+  border: none;
+  padding: 10px;
+  width: 250px;
+  line-height: 30px;
+  margin-bottom: 30px;
+  background-color: rgb(215, 191, 236);
+}
