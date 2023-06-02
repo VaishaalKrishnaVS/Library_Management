@@ -15,6 +15,8 @@ class Shop extends Component {
             products: BOOK,
             searchFeild: "",
             searchFeild2: "",
+            searchFeild3: "",
+            searchFeild4: "",
         };
     }
 
@@ -34,14 +36,33 @@ class Shop extends Component {
         });
     };
 
+    onSearchType = (event) => {
+        const searchFeild3 = event.target.value.toLowerCase();
+        this.setState(() => {
+            return { searchFeild3 };
+        });
+    };
+
+    onSearchCategory = (event) => {
+        const searchFeild4 = event.target.value.toLowerCase();
+        this.setState(() => {
+            return { searchFeild4 };
+        });
+    };
+
     render() {
-        const { products, searchFeild, searchFeild2 } = this.state;
-        const { onSearchChange, onSearchAuther } = this;
+        const { products, searchFeild, searchFeild2, searchFeild3, searchFeild4 } = this.state;
+        const { onSearchChange, onSearchAuther, onSearchCategory, onSearchType } = this;
 
         const filteredCards = products.filter((product) => {
-            return product.name.toLowerCase().includes(searchFeild) && product.author.toLowerCase().includes(searchFeild2);
+            return product.title.toLowerCase().includes(searchFeild) &&
+                product.author.toLowerCase().includes(searchFeild2) &&
+                product.type.toLowerCase().includes(searchFeild3)
+                && (product.category + "").includes(searchFeild4)
+                ;
         });
 
+        const bookCount = filteredCards.length;
 
         return (
             <div>
@@ -54,8 +75,19 @@ class Shop extends Component {
                     <SearchBox
                         className="search-box"
                         onChange={onSearchAuther}
-                        placeholder="search basead on author"
+                        placeholder="search based on Author"
                     />
+                    <SearchBox
+                        className="search-box"
+                        onChange={onSearchType}
+                        placeholder="search based on Type"
+                    />
+                    <SearchBox
+                        className="search-box"
+                        onChange={onSearchCategory}
+                        placeholder="search based on Year"
+                    />
+                    <h2 className='books-count'>Total Books Count : {bookCount}</h2>
                 </div>
 
                 <CardList products={filteredCards} />
